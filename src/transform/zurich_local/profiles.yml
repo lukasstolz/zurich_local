@@ -1,0 +1,13 @@
+zurich_local:
+  outputs:
+    dev:
+      type: duckdb
+      path:  "md:zuerich_db?motherduck_token={{env_var('MD_ACCESS_TOKEN')}}"
+      threads: 4
+
+    prod:
+      type: duckdb
+      path:  "md:zuerich_db?motherduck_token={{env_var('MD_ACCESS_TOKEN')}}"
+      threads: 4
+
+  target: dev

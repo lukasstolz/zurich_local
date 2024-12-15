@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: zuerich_raw
+    database: zuerich_db
+    schema: raw
+    tables:
+      - name: shopping
