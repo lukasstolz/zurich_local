@@ -52,7 +52,7 @@ def write_destination(destination: ab.Destination, res: ab.ReadResult) -> None:
 
 
 def load_data() -> None:
-    source = get_zurich_source("shopping")
+    source = get_zurich_source("*")
     destination = get_md_destination()
 
     source_results = read_source(source)

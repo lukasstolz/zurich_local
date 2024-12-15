@@ -28,7 +28,7 @@
     {% set key_names = dbt_utils.get_query_results_as_dict(json_keys_query) %}
 
     {% for key_name in key_names.key_name %}
-        {% do cols_keys.append([col_name | replace(" ", "_"), key_name | replace(" ", "_")]) %}
+        {% do cols_keys.append([col_name, key_name]) %}
     {% endfor %}
 
 {% endfor %}

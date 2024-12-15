@@ -6,3 +6,13 @@ sources:
     schema: raw
     tables:
       - name: shopping
+      - name: activities
+      - name: bars
+      - name: culture
+      - name: dining
+      - name: hotels
+      - name: museums
+      - name: nightlife
+      - name: sights
+      - name: sport
+      - name: wellness
