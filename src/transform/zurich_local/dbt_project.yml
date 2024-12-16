@@ -31,3 +31,6 @@ models:
     staging:
       +materialized: table
       +schema: staging
+    processed:
+      +materialized: table
+      +schema: processed
