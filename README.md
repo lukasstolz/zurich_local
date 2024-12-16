@@ -1,4 +1,4 @@
-[![Ruff][ruff-image]][ruff-url]
+[![Ruff](ruff-image)][ruff-url]
 [![pre-commit][pre-commit-image]][pre-commit-url]
 
 
