@@ -1,4 +1,4 @@
-[![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
+[![Ruff][ruff-image]][ruff-url]
 [![pre-commit][pre-commit-image]][pre-commit-url]
 
 
@@ -31,3 +31,9 @@ $ poetry install
 ## Usage
 
 ...
+
+
+[ruffl-url]:https://github.com/astral-sh/ruff
+[ruff-image]:https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json
+[pre-commit-image]: https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit
+[pre-commit-url]: https://github.com/pre-commit/pre-commit
