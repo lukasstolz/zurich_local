@@ -30,6 +30,9 @@ $ poetry install
 
 ## Usage
 
+Create a Motherduck account and database. Copy your access token from the settings.
+Create a .env file in the project root and set MD_ACCESS_TOKEN=<your token>
+
 ...
 
 
