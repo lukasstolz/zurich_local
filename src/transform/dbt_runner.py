@@ -1,7 +1,10 @@
 from dbt.cli.main import dbtRunner, dbtRunnerResult
+from loguru import logger
 
 
 def run_dbt() -> None:
+    logger.info("Running dbt")
+
     dbt = dbtRunner()
 
     cli_args = [
@@ -13,7 +16,7 @@ def run_dbt() -> None:
     res: dbtRunnerResult = dbt.invoke(cli_args)
 
     for r in res.result:
-        print(f"{r.node.name}: {r.status}")
+        logger.info(f"{r.node.name}: {r.status}")
 
 
 if __name__ == "__main__":
