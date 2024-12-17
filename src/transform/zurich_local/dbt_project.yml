@@ -34,3 +34,6 @@ models:
     processed:
       +materialized: table
       +schema: processed
+    marts:
+      +materialized: view
+      +schema: marts
