@@ -18,6 +18,7 @@ pre-commit = "^4.0.1"
 ruff = "^0.8.3"
 isort = "^5.13.2"
 dbt-duckdb = {extras = ["nmd"], version = "^1.9.1"}
+st-pages = "^1.0.1"
 
 
 [build-system]

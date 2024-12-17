@@ -1,0 +1,14 @@
+[[pages]]
+path = "sites/map.py"
+name = "Map"
+url_path = "map"
+
+[[pages]]
+path = "sites/list.py"
+name = "Liste"
+url_path = "list"
+
+[[pages]]
+path = "sites/detail.py"
+name = "Detail"
+url_path = "detail"

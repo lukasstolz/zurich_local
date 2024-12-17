@@ -16,7 +16,7 @@ This app was created for the [Airbyte + Motherduck Hackathon](https://airbyte.co
 
 ## Installation
 
-* Install python 3.10 e.g. using [pyenv](https://github.com/pyenv/pyenv)
+* Install python 3.11 e.g. using [pyenv](https://github.com/pyenv/pyenv)
 * [Install poetry](https://python-poetry.org/docs/#installation)
 * [Install Docker](https://docs.docker.com/get-started/get-docker/)
 
