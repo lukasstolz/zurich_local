@@ -33,6 +33,12 @@ def load_custom_types() -> pd.DataFrame:
 
 
 @st.cache_data
+def load_categories() -> pd.DataFrame:
+    custom_types = con.sql("select * from marts.dim_categories").df()
+    return custom_types
+
+
+@st.cache_data
 def load_zurich_items() -> pd.DataFrame:
     items = con.sql("""
                     select
@@ -47,6 +53,9 @@ def load_zurich_items() -> pd.DataFrame:
 
                     left join marts.dim_cities cities
                     on cities.id = items.city_id
+
+                    left join marts.dim_categories categories
+                    on categories.id = items.category_id
 
                     """).df()
 

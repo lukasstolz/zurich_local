@@ -68,6 +68,8 @@ with items as (
         "license",
         "osm_id",
         "zurichcard",
+        "category_de",
+        "category_en"
     ] %}
     {% for stg_table in staging_tables.table_name %}
 

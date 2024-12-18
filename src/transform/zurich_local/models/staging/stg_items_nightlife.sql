@@ -10,5 +10,7 @@ select
         {{- col -}},
     {% endfor %}
 
+    'Nightlife' as category_en,
+    'Nachtleben' as category_de
 from
     {{ source('zuerich_raw', 'nightlife') }}

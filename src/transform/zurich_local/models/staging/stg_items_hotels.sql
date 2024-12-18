@@ -10,5 +10,7 @@ select
         {{- col -}},
     {% endfor %}
 
+    'Lodging' as category_en,
+    'Hotels' as category_de
 from
     {{ source('zuerich_raw', 'hotels') }}

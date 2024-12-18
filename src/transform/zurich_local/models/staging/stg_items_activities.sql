@@ -10,5 +10,7 @@ select
         {{- col -}},
     {% endfor %}
 
+    'Activities' as category_en,
+    'Aktivitäten' as category_de
 from
     {{ source('zuerich_raw', 'activities') }}

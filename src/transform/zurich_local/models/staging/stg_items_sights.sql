@@ -10,5 +10,7 @@ select
         {{- col -}},
     {% endfor %}
 
+    'Sights' as category_en,
+    'Sehenswürdigkeiten' as category_de
 from
     {{ source('zuerich_raw', 'sights') }}

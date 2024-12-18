@@ -10,5 +10,7 @@ select
         {{- col -}},
     {% endfor %}
 
+    'Museums' as category_en,
+    'Museen' as category_de
 from
     {{ source('zuerich_raw', 'museums') }}
