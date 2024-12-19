@@ -21,6 +21,7 @@ dbt-duckdb = {extras = ["nmd"], version = "^1.9.1"}
 st-pages = "^1.0.1"
 folium = "^0.19.2"
 streamlit-folium = "^0.23.2"
+streamlit-option-menu = "^0.4.0"
 
 
 [build-system]
