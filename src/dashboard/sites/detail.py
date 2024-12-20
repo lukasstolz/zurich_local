@@ -2,6 +2,7 @@ import streamlit as st
 
 from src.dashboard.data.load_data import load_zurich_item
 
+print(st.session_state["current_item"])
 item_df = load_zurich_item(item_id=st.session_state["current_item"]).iloc[0]
 st.subheader(item_df["name_de"], divider="rainbow")
 
@@ -14,12 +15,28 @@ with col2:
     st.html(item_df["description_de"])
 
 with col3:
+    tel = (
+        f'{item_df["address_telephone"]}<br />'
+        if item_df["address_telephone"] is not None
+        else ""
+    )
+    email = (
+        f'{item_df["address_email"]}<br />'
+        if item_df["address_email"] is not None
+        else ""
+    )
+    web = (
+        f"""<a href='{item_df["address_url"]}' target="_blank">Website</a><br />"""
+        if item_df["address_url"] is not None
+        else ""
+    )
+
     text = f"""
-    {item_df["address_streetAddress"]}<br />
+    {item_df["address_streetAddress"]} <br />
     {item_df["address_postalCode"]} {item_df["city"]}<br />
     <br />
-    {item_df["address_telephone"]}<br />
-    {item_df["address_email"]}<br />
-    <a href='{item_df["address_url"]} target="_blank"'>Website</a><br />
+    {tel}
+    {email}
+    {web}
     """
     st.html(text)
