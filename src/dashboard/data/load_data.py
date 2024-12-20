@@ -62,4 +62,26 @@ def load_zurich_items() -> pd.DataFrame:
     return items
 
 
-print(load_zurich_items())
+@st.cache_data
+def load_zurich_item(item_id: str) -> pd.DataFrame:
+    items = con.sql(f"""
+                    select
+                        *
+                    from marts.fact_zurich_items items
+
+                    left join marts.dim_types types
+                    on types.id = items.type_id
+
+                    left join marts.dim_custom_types custom_types
+                    on custom_types.id = items.custom_type_id
+
+                    left join marts.dim_cities cities
+                    on cities.id = items.city_id
+
+                    left join marts.dim_categories categories
+                    on categories.id = items.category_id
+
+                    where items.id = '{item_id}'
+                    """).df()
+
+    return items
