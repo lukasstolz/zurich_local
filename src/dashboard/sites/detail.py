@@ -2,9 +2,9 @@ import streamlit as st
 
 from src.dashboard.data.load_data import load_zurich_item
 
-print(st.session_state["current_item"])
+st.session_state["selected_marker"] = []
 item_df = load_zurich_item(item_id=st.session_state["current_item"]).iloc[0]
-st.subheader(item_df["name_de"], divider="rainbow")
+st.subheader(item_df["name_en"], divider="rainbow")
 
 col1, col2, col3 = st.columns(3)
 
@@ -12,7 +12,7 @@ with col1:
     st.image(item_df["image_url"])
 
 with col2:
-    st.html(item_df["description_de"])
+    st.html(item_df["description_en"])
 
 with col3:
     tel = (

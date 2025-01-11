@@ -8,22 +8,22 @@ from src.dashboard.data.load_data import load_zurich_items
 
 items_df = load_zurich_items()
 icon_dict = {
-    "Hotels": {"icon": "hotel", "color": "blue"},
-    "Sport": {"icon": "volleyball", "color": "green"},
-    "Nachtleben": {"icon": "martini-glass", "color": "darkblue"},
+    "Lodging": {"icon": "hotel", "color": "blue"},
+    "Sports": {"icon": "volleyball", "color": "green"},
+    "Nightlife": {"icon": "martini-glass", "color": "darkblue"},
     "Bars": {"icon": "wine-glass", "color": "cadetblue"},
     "Shopping": {"icon": "bag-shopping", "color": "lightgreen"},
-    "Museen": {"icon": "building-columns", "color": "purple"},
-    "Sehenswürdigkeiten": {"icon": "mountain", "color": "darkgreen"},
+    "Museums": {"icon": "building-columns", "color": "purple"},
+    "Sights": {"icon": "mountain", "color": "darkgreen"},
     "Wellness": {"icon": "spa", "color": "lightblue"},
-    "Gastronomie": {"icon": "utensils", "color": "red"},
-    "Kultur": {"icon": "masks-theater", "color": "lightred"},
-    "Aktivitäten": {"icon": "ticket", "color": "darkred"},
+    "Dining": {"icon": "utensils", "color": "red"},
+    "Culture": {"icon": "masks-theater", "color": "lightred"},
+    "Activities": {"icon": "ticket", "color": "darkred"},
 }
 
 categories = [*icon_dict]
 
-items_df["icon_opts"] = items_df["category_de"].map(icon_dict)
+items_df["icon_opts"] = items_df["category_en"].map(icon_dict)
 
 
 def create_marker(lat: int, lon: int, tooltip: str, icon_opts: dict) -> None:
@@ -68,13 +68,13 @@ def draw_map() -> None:
 
 
 def add_markers() -> None:
-    selected_items = items_df[items_df["category_de"] == st.session_state["category"]]
+    selected_items = items_df[items_df["category_en"] == st.session_state["category"]]
 
     selected_items[~pd.isna(selected_items["geocoordinates_latitude"])].apply(
         lambda x: create_marker(
             x["geocoordinates_latitude"],
             x["geocoordinates_longitude"],
-            tooltip=x["name_de"],
+            tooltip=x["name_en"],
             icon_opts=x["icon_opts"],
         ),
         axis=1,
@@ -131,17 +131,18 @@ def main() -> None:
         with col2:
             selected_marker = st.session_state["selected_marker"]["last_object_clicked"]
             item = items_df[
-                (items_df["category_de"] == st.session_state["category"])
+                (items_df["category_en"] == st.session_state["category"])
                 & (items_df["geocoordinates_latitude"] == str(selected_marker["lat"]))
                 & (items_df["geocoordinates_longitude"] == str(selected_marker["lng"]))
             ].iloc[0]
 
-            st.subheader(item["name_de"])
+            st.subheader(item["name_en"])
 
-            st.text(item["disambiguatingdescription_de"])
+            st.text(item["disambiguatingdescription_en"])
             details_button = st.button("Details", key=item["id"])
             if details_button:
                 st.session_state["current_item"] = item["id"]
+                st.session_state["selected_marker"] = []
                 st.switch_page("sites/detail.py")
 
             st.button("Close", on_click=close_sidebar)

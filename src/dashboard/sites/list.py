@@ -5,20 +5,21 @@ from src.dashboard.data.load_data import load_zurich_items
 
 items_df = load_zurich_items()
 icon_dict = {
-    "Hotels": {"icon": "hotel", "color": "blue"},
-    "Sport": {"icon": "volleyball", "color": "green"},
-    "Nachtleben": {"icon": "martini-glass", "color": "darkblue"},
+    "Lodging": {"icon": "hotel", "color": "blue"},
+    "Sports": {"icon": "volleyball", "color": "green"},
+    "Nightlife": {"icon": "martini-glass", "color": "darkblue"},
     "Bars": {"icon": "wine-glass", "color": "cadetblue"},
     "Shopping": {"icon": "bag-shopping", "color": "lightgreen"},
-    "Museen": {"icon": "building-columns", "color": "purple"},
-    "Sehenswürdigkeiten": {"icon": "mountain", "color": "darkgreen"},
+    "Museums": {"icon": "building-columns", "color": "purple"},
+    "Sights": {"icon": "mountain", "color": "darkgreen"},
     "Wellness": {"icon": "spa", "color": "lightblue"},
-    "Gastronomie": {"icon": "utensils", "color": "red"},
-    "Kultur": {"icon": "masks-theater", "color": "lightred"},
-    "Aktivitäten": {"icon": "ticket", "color": "darkred"},
+    "Dining": {"icon": "utensils", "color": "red"},
+    "Culture": {"icon": "masks-theater", "color": "lightred"},
+    "Activities": {"icon": "ticket", "color": "darkred"},
 }
 
 categories = [*icon_dict]
+st.session_state["selected_marker"] = []
 
 
 def change_category(id: str) -> None:
@@ -42,12 +43,12 @@ with st.sidebar:
 st.header(st.session_state["category"], divider="rainbow")
 
 
-selected_items = items_df[items_df["category_de"] == st.session_state["category"]]
+selected_items = items_df[items_df["category_en"] == st.session_state["category"]]
 
 for index, item in selected_items.iterrows():
-    st.subheader(item["name_de"])
+    st.subheader(item["name_en"])
 
-    st.text(item["textteaser_de"])
+    st.text(item["textteaser_en"])
 
     details_button = st.button("Detail", key=index)
     if details_button:
