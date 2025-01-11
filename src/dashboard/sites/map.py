@@ -42,7 +42,6 @@ def base_map() -> None:
     m = folium.Map(
         location=st.session_state.map_config["center"],
         zoom_start=st.session_state.map_config["zoom"],
-        tiles="Stadia.AlidadeSmooth",
     )
     fg = folium.FeatureGroup(name="Markers")
 

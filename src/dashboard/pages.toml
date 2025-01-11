@@ -5,7 +5,7 @@ url_path = "map"
 
 [[pages]]
 path = "sites/list.py"
-name = "Liste"
+name = "List"
 url_path = "list"
 
 [[pages]]
