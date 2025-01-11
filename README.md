@@ -7,6 +7,8 @@ zurich local map
 
 This app was created for the [Airbyte + Motherduck Hackathon](https://airbyte.com/hackathon-airbytemotherduck). It uses Open Government Data (OGD) of the city of Zurich, Switzerland: [Open Data Zurich](https://data.stadt-zuerich.ch/).
 
+The Streamlit app is available here: [https://zurichlocal.streamlit.app/](https://zurichlocal.streamlit.app/)
+
 
 ## Stack
 
@@ -37,7 +39,25 @@ $ poetry install --no-root
 
 ## Usage
 
-Create a Motherduck account and database. Copy your access token from the settings.
-Create a .env file in the project root and set MD_ACCESS_TOKEN=\<your token\>
+1. Create a Motherduck account and database. Copy your access token from the settings.
 
-...
+2. Create a .env file in the project root and set MD_ACCESS_TOKEN=\<your token\>
+
+3. Run Airbyte import to your Motherduck instance:
+
+```bash
+$ python src/ingest/ingest_data.py
+```
+
+4. Run DBT transformations on Motherduck
+
+
+```bash
+$ python src/transform/dbt_runner.py
+```
+
+5. Run the streamlit dashboard
+
+```bash
+$ python -m streamlit run src/dashboard/app.py
+```
