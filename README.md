@@ -1,5 +1,5 @@
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
-[![pre-commit][pre-commit-image]][pre-commit-url]
+[![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit)](https://github.com/pre-commit/pre-commit)
 
 
 zurich local map
@@ -7,12 +7,21 @@ zurich local map
 
 This app was created for the [Airbyte + Motherduck Hackathon](https://airbyte.com/hackathon-airbytemotherduck). It uses Open Government Data (OGD) of the city of Zurich, Switzerland: [Open Data Zurich](https://data.stadt-zuerich.ch/).
 
-## Table of Contents
 
-- [zurich local map](#zurich-local-map)
-  - [Table of Contents](#table-of-contents)
-  - [Installation](#installation)
-  - [Usage](#usage)
+## Stack
+
+![image](zurich_local_stack.png)
+
+1. Data is loaded from the City of Zurich Open Data API into the "raw" schema on Motherduck. The Airbyte API Connection was built in the Airbyte UI and exported to YAML. Mothderduck is accessed using the new Airbyte Motherduck connector. The ingestion is run through PyAirbyte.
+2. The data is transformed using DBT and DuckDB. Several custom DBT macros process the raw data. The final marts schema combines the processed sources into a star schema.
+3. Data from the marts schema is loaded into a Streamlit dashboard using duckdb and python. It is then display on a folium map.
+
+
+## ToDo
+
+1. Testing - Test data for correctness and completeness, test pipelines, test dashboard.
+2. Orchestration - e.g. use Dagster to schedule and run the data ingesition and transformation pipelines.
+3. CI/CD - use github actions to build container images of the data pipeline and the serving stage. Deploy them to an appropriate service.
 
 ## Installation
 
@@ -20,21 +29,15 @@ This app was created for the [Airbyte + Motherduck Hackathon](https://airbyte.co
 * [Install poetry](https://python-poetry.org/docs/#installation)
 * [Install Docker](https://docs.docker.com/get-started/get-docker/)
 
-Run
+In the project dir run
 
-```
-$ mkdir zurich_local && cd zurich_local
-$ git clone https://github.com/lukasstolz/zurich_local.git .
-$ poetry install
+```bash
+$ poetry install --no-root
 ```
 
 ## Usage
 
 Create a Motherduck account and database. Copy your access token from the settings.
-Create a .env file in the project root and set MD_ACCESS_TOKEN=<your token>
+Create a .env file in the project root and set MD_ACCESS_TOKEN=\<your token\>
 
 ...
-
-
-[pre-commit-image]: https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit
-[pre-commit-url]: https://github.com/pre-commit/pre-commit
