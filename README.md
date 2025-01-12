@@ -23,15 +23,9 @@ Streamlit is definitely not the best choice for this type of app (map, list and 
 
 The stack and architecture were chosen to reflect a classic data engineering workflow, even though the amount data used in the app is quite small.
 
-## ToDo
-
-1. Testing - Test data for correctness and completeness, test pipelines, test dashboard.
-2. Orchestration - e.g. use Dagster to schedule and run the data ingesition and transformation pipelines.
-3. CI/CD - use github actions to build container images of the data pipeline steps.
-
 ## Installation
 
-* Install python 3.11 e.g. using [pyenv](https://github.com/pyenv/pyenv)
+* Install python 3.11, e.g. using [pyenv](https://github.com/pyenv/pyenv)
 * [Install poetry](https://python-poetry.org/docs/#installation)
 * [Install Docker](https://docs.docker.com/get-started/get-docker/) (needed for Airbyte Connector)
 
@@ -67,3 +61,11 @@ $ python src/transform/dbt_runner.py
 ```bash
 $ python -m streamlit run src/dashboard/app.py
 ```
+
+
+
+## ToDo
+
+1. Testing - Test data for correctness and completeness, test pipelines, test dashboard.
+2. Orchestration - e.g. use Dagster to schedule and run the data ingesition and transformation pipelines.
+3. CI/CD - use github actions to build container images of the data pipeline steps.
