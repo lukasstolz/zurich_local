@@ -23,6 +23,11 @@ Streamlit is definitely not the best choice for this type of app (map, list and 
 
 The stack and architecture were chosen to reflect a classic data engineering workflow, even though the amount data used in the app is quite small.
 
+The used Motherduck DB:
+```
+ATTACH 'md:_share/zuerich_db/8bc853bd-f2a3-4856-897b-a65e423ccb81'
+```
+
 ## Installation
 
 * Install python 3.11, e.g. using [pyenv](https://github.com/pyenv/pyenv)
