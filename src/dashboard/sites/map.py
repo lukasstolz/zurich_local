@@ -82,6 +82,8 @@ def add_markers() -> None:
 
 def change_category(id: str) -> None:
     close_sidebar()
+
+    st.session_state["selected_marker"] = []
     st.session_state["markers"].clear()
     st.session_state["category"] = st.session_state[id]
     add_markers()
@@ -129,6 +131,9 @@ def main() -> None:
 
         with col2:
             selected_marker = st.session_state["selected_marker"]["last_object_clicked"]
+            if selected_marker is None:
+                close_sidebar()
+                st.rerun()
             item = items_df[
                 (items_df["category_en"] == st.session_state["category"])
                 & (items_df["geocoordinates_latitude"] == str(selected_marker["lat"]))
