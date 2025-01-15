@@ -7,15 +7,19 @@ zurich local map
 
 This app was created for the [Airbyte + Motherduck Hackathon](https://airbyte.com/hackathon-airbytemotherduck). It uses Open Government Data (OGD) of the city of Zurich, Switzerland: [Open Data Zurich](https://data.stadt-zuerich.ch/).
 
-The Streamlit app is available here: [https://zurichlocal.streamlit.app/](https://zurichlocal.streamlit.app/)
+It displays things to do, where to sleep, eat and drink and what to see in and around Zurich, Switzerland. In total there are 11 different categories to explore.
 
-The app displays things to do, where to sleep, eat and drink and what to see in and around Zurich, Switzerland.
+The app ingests open API data from zurich tourism using Airbyte, stores the data on Motherduck, transforms it on MD with dbt and serves it in streamlit.
 
-## Stack container images of the data pipeline.
+## Demo
+
+[https://zurichlocal.streamlit.app/](https://zurichlocal.streamlit.app/)
+
+## Stack
 
 ![image](zurich_local_stack.png)
 
-1. Data is loaded from the City of Zurich Open Data API into the "raw" schema on Motherduck. The Airbyte API Connection was built in the Airbyte UI and exported to YAML. Mothderduck is accessed using the new Airbyte Motherduck connector. The ingestion is run through PyAirbyte.
+1. Data is loaded from the City of Zurich Open Data API (11 API endpoints, one per category) into the "raw" schema on Motherduck. The Airbyte API Connection was built in the Airbyte UI and exported to YAML. Mothderduck is accessed using the new Airbyte Motherduck connector. The ingestion is run through PyAirbyte.
 2. The data is transformed using DBT and DuckDB. Several custom DBT macros process the raw data. The final marts schema combines the processed sources into a star schema.
 3. Data from the marts schema is loaded into a Streamlit dashboard using duckdb and python and displayed on a folium map.
 
