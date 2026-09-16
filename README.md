@@ -11,9 +11,6 @@ It displays things to do, where to sleep, eat and drink and what to see in and a
 
 The app ingests open API data from zurich tourism using Airbyte, stores the data on Motherduck, transforms it on MD with dbt and serves it in streamlit.
 
-## Demo
-
-[https://zurichlocal.streamlit.app/](https://zurichlocal.streamlit.app/)
 
 ## Stack
 
