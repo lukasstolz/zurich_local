@@ -5,7 +5,7 @@
 zurich local map
 ================
 
-This app was created for the [Airbyte + Motherduck Hackathon](https://airbyte.com/hackathon-airbytemotherduck). It uses Open Government Data (OGD) of the city of Zurich, Switzerland: [Open Data Zurich](https://data.stadt-zuerich.ch/).
+This app was created for the Airbyte + Motherduck Hackathon in 2025, getting second place: [And the winner of the Airbyte+Motherduck Hackathon is.....](https://airbyte.com/blog/and-the-winner-of-the-airbyte-motherduck-hackathon-is). It uses Open Government Data (OGD) of the city of Zurich, Switzerland: [Open Data Zurich](https://data.stadt-zuerich.ch/).
 
 It displays things to do, where to sleep, eat and drink and what to see in and around Zurich, Switzerland. In total there are 11 different categories to explore.
 
